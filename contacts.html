@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Мудрость Студента</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Связаться с нами</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="gallery.html">Галерея цитат</a></li>
+                <li><a href="#">Закладки (Скоро)</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contacts-container">
+        <section class="info-card-container">
+            <div class="user-card">
+                <h3>Разработчик</h3>
+                <p><strong>ФИО:</strong> Гончаров Максим Витальевич</p>
+                <p><strong>Email:</strong> sqworex12@gmail.com</p>
+                <p><strong>Специализация:</strong> Frontend-разработка и сборник мудрости</p>
+                <p><strong>Локация:</strong> г. Москва, IT-москва</p>
+                <div class="social-links">
+                    <a href="https://t.me/s9worex" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://github.com/whyn0n3" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="feedback-form">
+            <h2>Напишите нам</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label for="name" class="req-label">Имя</label>
+                    <input type="text" id="name" required placeholder="Как вас зовут?">
+                </div>
+
+                <div class="input-group">
+                    <label for="email" class="req-label">Email</label>
+                    <input type="email" id="email" required placeholder="example@mail.ru">
+                </div>
+
+                <div class="input-group">
+                    <label for="subject">Тема сообщения</label>
+                    <select id="subject">
+                        <option value="suggest">Предложить цитату</option>
+                        <option value="error">Ошибка на сайте</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="message" class="req-label">Сообщение</label>
+                    <textarea id="message" rows="5" required placeholder="Ваш текст..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" required>
+                    <label for="agree">Согласен на обработку данных</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить сообщение</button>
+            </form>
+        </section>
+
+        <section class="extra-info">
+            <div class="faq-item">
+                <h3>Когда обновляются цитаты?</h3>
+                <p>Мы добавляем новые мудрости каждый понедельник в начале учебной недели.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Как попасть в галерею?</h3>
+                <p>Пришлите свою любимую цитату через форму выше, и мы её опубликуем!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Гончаров Максим, студент группы 1ИП-2-25, 2026</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,557 @@
+/* ПОЛНЫЙ STYLE.CSS 
+   Проект: Мудрость Студента 
+   Практическая работа №4 + Анимации
+*/
+
+/* --- 1. СБРОС И ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Требование ПР4: современная блочная модель */
+}
+
+::selection {
+    background: #670010; /* Псевдоэлемент: цвет выделения текста */
+    color: white;
+}
+
+body {
+    font-family: 'Verdana', Geneva, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden; /* Защита от горизонтальной прокрутки при анимациях */
+}
+
+/* --- ПРАКТИЧЕСКАЯ РАБОТА №5: FLEXBOX МОДЕРНИЗАЦИЯ --- */
+
+/* 1. Обновляем Шапку (Этап 3) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 40px;
+    background: linear-gradient(-45deg, #670010, #a10019, #3c0000, #830014);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+/* 2. Обновляем Навигацию (Этап 2) */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    padding: 0;
+}
+
+/* 3. Исправляем карточки и форму (Этап 6) */
+.contacts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.info-card-container {
+    flex: 1 1 300px; /* Карточка разработчика */
+}
+
+.feedback-form {
+    flex: 2 1 500px; /* Форма шире карточки */
+}
+
+/* 4. ИСПРАВЛЕНИЕ НИЖНИХ КАРТОЧЕК (FAQ) */
+.extra-info {
+    display: flex;           /* Включаем Flexbox для FAQ */
+    width: 100%;             /* На всю ширину под формой */
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;         /* Чтобы переносились на мобилках */
+}
+
+.faq-item {
+    flex: 1 1 300px;         /* Карточки FAQ делят место поровну */
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid #670010; /* Твоя фирменная черта */
+    transition: transform 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 5. Обновляем Галерею на Flexbox (Этап 4) */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.image-card.photo {
+    flex: 1 1 320px;
+    max-width: 400px;
+}
+
+/* 6. Гибкий Футер */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    font-size: clamp(24px, 5vw, 40px);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- 3. НАВИГАЦИЯ --- */
+nav {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 50px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+}
+
+/* Обновляем список навигации */
+nav ul {
+    list-style: none;
+    display: flex;                   /* Flexbox для пунктов меню */
+    gap: 15px;                       /* Отступы между кнопками */
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+/* Псевдокласс :hover */
+nav ul li a:hover, nav ul li a.active {
+    background-color: white;
+    color: #670010;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+}
+
+/* --- 4. ОСНОВНОЙ КОНТЕНТ (Анимация появления) --- */
+main {
+    animation: fadeInPage 0.8s ease-out;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+/* Анимированные заголовки h2 через псевдоэлемент */
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 4px;
+    background: #670010;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+section:hover h2::after {
+    width: 100%;
+}
+
+/* --- ГАЛЕРЕЯ НА FLEXBOX --- */
+.gallery-grid {
+    display: flex;          /* Включаем Flexbox */
+    flex-wrap: wrap;        /* Позволяем карточкам переноситься */
+    justify-content: center; /* Центрируем карточки в строке */
+    gap: 25px;              /* Расстояние между карточками */
+}
+
+.image-card {
+    flex: 1 1 320px;       /* Гибкость: расти, сжимайся, база 320px */
+    max-width: 400px;      /* Чтобы карточки не становились слишком огромными */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-visual {
+    height: 200px;
+    background: #830014;
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Пульсация лайка */
+.like-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border: none;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+    animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+}
+
+/* --- КОНТАКТЫ НА FLEXBOX --- */
+.contacts-container {
+    display: flex;          /* Включаем Flexbox */
+    flex-wrap: wrap;        /* Адаптивность для мобилок */
+    gap: 40px;
+    align-items: flex-start; /* Прижать к верху */
+}
+
+.user-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f6 100%);
+    border: 1px solid #eee;
+}
+
+/* Псевдоэлемент иконки перед email */
+.user-card p strong::before {
+    content: "📍 "; /* Можно заменить на иконку FontAwesome */
+}
+
+/* Стилизация полей ввода */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.req-label::after {
+    content: " *"; /* Псевдоэлемент для обязательных полей */
+    color: #e74c3c;
+}
+
+input[type="text"], 
+input[type="email"], 
+select, 
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+/* Псевдоклассы :focus и :invalid */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #670010;
+    box-shadow: 0 0 10px rgba(103, 0, 16, 0.1);
+    transform: translateX(5px);
+}
+
+input::placeholder {
+    color: #ccc;
+    font-style: italic;
+}
+
+/* Чередование стилей FAQ (:nth-child) */
+.faq-item {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.faq-item:nth-child(odd) { background-color: #fff; border-left: 5px solid #670010; }
+.faq-item:nth-child(even) { background-color: #f9f9f9; border-left: 5px solid #333; }
+
+/* Кнопка с эффектом */
+.submit-btn {
+    background: #670010;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background: #3c0000;
+    letter-spacing: 3px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* --- 7. ПОДВАЛ --- */
+.footer {
+    display: flex;
+    justify-content: center; /* Центрируем контент */
+    align-items: center;
+    
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+/* --- 8. АДАПТИВНОСТЬ --- */
+@media (max-width: 850px) {
+    .contacts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* 1. Добавляем отступы для всего текстового блока под картинкой */
+.card-info {
+    padding: 20px 25px; /* Увеличили боковые отступы до 25px */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 2. Стилизуем текст заголовка (Цитата №...) */
+.card-info h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+/* 3. Поправляем фамилии (авторов) */
+.card-info .tag {
+    display: inline-block;
+    margin-left: 10px; /* Сдвигаем фамилию чуть правее */
+    padding: 4px 12px;
+    background-color: #f0f0f0; /* Легкий фон, чтобы выделить автора */
+    border-radius: 15px;
+    font-size: 14px;
+    color: #670010; /* Цвет в стиле твоего сайта */
+    font-style: italic;
+    width: fit-content; /* Чтобы фон был только под текстом */
+    transition: 0.3s;
+}
+
+/* Эффект при наведении на карточку — автор еще немного сдвигается */
+.image-card:hover .tag {
+    transform: translateX(10px); /* Плавное движение вправо при ховере */
+    background-color: #670010;
+    color: white;
+}
+
+/* Панель статистики */
+.stats-panel {
+    background: white;
+    padding: 10px 25px;
+    border-radius: 50px; /* Делаем овальной и аккуратной */
+    display: flex;
+    gap: 30px;
+    width: fit-content; /* Ширина по контенту */
+    margin: -45px auto 25px; /* МИНУС 45px сверху — это вынесет панель на границу шапки */
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 2px solid #670010;
+    animation: slideDown 0.8s ease-out;
+}
+
+/* Анимация появления статистики */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.stats-panel p {
+    margin: 0; /* Убираем лишние отступы у текста */
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.stats-panel span {
+    color: #670010;
+    font-size: 18px;
+}
+
+/* --- ОБНОВЛЕННЫЕ КОНТАКТЫ --- */
+
+/* Контейнер страницы (увеличиваем отступ сверху) */
+.contacts-container {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Фиксируем ширину левого столбика */
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Сама карточка контактов */
+.user-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между строками */
+    background: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+    height: fit-content; /* Чтобы карточка не растягивалась до пола */
+    transition: 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(103, 0, 16, 0.1);
+}
+
+/* Заголовок в карточке */
+.user-card h3 {
+    font-size: 22px;
+    color: #670010;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #fff5f6;
+    padding-bottom: 10px;
+}
+
+/* Стилизация каждой строки текста */
+.user-card p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column; /* Текст будет под жирным заголовком */
+}
+
+.user-card p strong {
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    opacity: 0.7;
+}
+
+/* Соцсети в ряд */
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #f8f8f8;
+    color: #670010;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: #670010;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 900px) {
+    .contacts-container {
+        grid-template-columns: 1fr; /* В один столбик на телефонах */
+    }
+    .user-card {
+        width: 100%;
+    }
+}
+
+.info-card-container {
+    flex: 1;                /* Занимает 1 часть пространства */
+    min-width: 300px;
+}
+
+.feedback-form {
+    flex: 2;                /* Занимает 2 части пространства (шире карточки) */
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
